@@ -111,4 +111,4 @@ if __name__ == "__main__":
         "리뷰 수": (".//span[contains(text(), '리뷰')]", "xpath")
     }
 
-    crawl_naver_map(url, fields, scroll_count=25, driver_path=driver_path, excel_filename="충주음식점.xlsx")
+    crawl_naver_map(url, fields, scroll_count=25, driver_path=driver_path, excel_filename="충주음식점_네이버.xlsx")

@@ -43,7 +43,7 @@ def get_coordinates_to_excel(query, search_coord, output_file):
     print(f"{output_file} 파일로 저장 완료!")
 
 if __name__ == "__main__":
-    query = "충주여자고등학교"
+    query = input()
     search_coord = "127.93883339999621;36.96102790000016"
-    output_file = "충주여자고등학교_좌표.xlsx"
+    output_file = "좌표.xlsx"
     get_coordinates_to_excel(query, search_coord, output_file)
