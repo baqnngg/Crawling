@@ -70,7 +70,7 @@ def crawl_naver_map(url, fields, scroll_count=7, driver_path=None, excel_filenam
 
 
 if __name__ == "__main__":
-    driver_path = "C:\\Users\\il869\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+    driver_path = ""
     url = "https://map.naver.com/p/search/충주음식점"
 
     fields = {
