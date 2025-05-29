@@ -19,3 +19,9 @@
 
 ```bash
 pip install selenium pandas openpyxl
+```
+
+```bash
+chromedriver
+https://googlechromelabs.github.io/chrome-for-testing/
+```
