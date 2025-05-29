@@ -49,6 +49,7 @@ def crawl_naver_map(url, fields, scroll_count=7, driver_path=None, excel_filenam
 
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service, options=options)
+    page = 0
     driver.get(url)
     time.sleep(3)
 
@@ -125,15 +126,18 @@ def crawl_naver_map(url, fields, scroll_count=7, driver_path=None, excel_filenam
 
         # 다음 페이지 버튼 클릭 시도
         try:
-            next_button = driver.find_element(
-                By.XPATH,
-                '//a[contains(@class, "eUTV2") and .//span[text()="다음페이지"] and @aria-disabled="false"]'
-            )
-            driver.execute_script("arguments[0].click();", next_button)
-            time.sleep(3)
+            for _ in range(page):
+                next_button = driver.find_element(
+                    By.XPATH,
+                    '//a[contains(@class, "eUTV2") and .//span[text()="다음페이지"] and @aria-disabled="false"]'
+                )
+                driver.execute_script("arguments[0].click();", next_button)
+                time.sleep(2)
+            page += 1
         except:
             print("🔚 다음 페이지 없음 또는 이동 불가 → 종료")
             break
+        driver.refresh()
 
     driver.quit()
 
@@ -154,5 +158,4 @@ if __name__ == "__main__":
         "별점": ("span.orXYY", "css"),
         "리뷰 수": (".//span[contains(text(), '리뷰')]", "xpath")
     }
-
     crawl_naver_map(url, fields, scroll_count=25, driver_path=driver_path, excel_filename="충주음식점_네이버_위도경도.xlsx")
